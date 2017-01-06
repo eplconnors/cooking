@@ -22,18 +22,28 @@ class OrderItem < ApplicationRecord
 
 private
   def product_present
+    puts "++++product_present++++"
     if product.nil?
+      puts "error"
       errors.add(:product, "is not valid or is not active.")
     end
   end
 
   def order_present
+    puts "++++order_present++++"
+    puts order.inspect
+    puts order.nil?
+    puts "++++order_present++++"
+
     if order.nil?
+      puts "error"
       errors.add(:order, "is not a valid order.")
     end
   end
 
   def finalize
+    puts "++++finalize+++"
+    puts self.inspect
     self[:unit_price] = unit_price
     self[:total_price] = quantity * self[:unit_price]
   end

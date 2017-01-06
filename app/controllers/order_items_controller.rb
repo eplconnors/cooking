@@ -1,9 +1,23 @@
 class OrderItemsController < ApplicationController
   def create
+      puts "=====create==="
+      puts order_item_params.inspect
+      puts "=====current_order==="
+      puts current_order.inspect
       @order = current_order
+      puts "*******************"
       @order_item = @order.order_items.new(order_item_params)
-      @order.save
+      puts "=====@order======="
+      puts @order.inspect
+      puts "=====@order======="
+      puts @order.inspect
+      @order.save!
+      puts "======order_items====="
+      puts @order.order_items
       session[:order_id] = @order.id
+      puts "=====session_id========"
+      puts session[:order_id]
+      session[:order_id]
     end
 
     def update
